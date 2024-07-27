@@ -1,0 +1,47 @@
+{
+    "name": "hexhat/travers",
+    "description": "A collection of tools to publish my personal blog",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Travers\\": "src/Travers/"
+        },
+        "files": [
+            "src/helpers.php",
+            "src/helpers_io.php"
+        ]
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "make init"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Alexey Makhnev",
+            "email": "alexey@makhnev.org"
+        }
+    ],
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "require": {
+        "symfony/var-dumper": "^7.1.2",
+        "symfony/console": "^7.1.2",
+        "scrivo/highlight.php": "^9.18.1.10",
+        "spatie/yaml-front-matter": "^2.0.9",
+        "league/commonmark": "^2.4.2",
+        "elazar/league-commonmark-obsidian": "^2.1",
+        "matthiasmullie/minify": "^1.3.73",
+        "symfony/error-handler": "^7.1.2",
+        "php-di/php-di": "^7.0.6",
+        "jenssegers/blade": "^2.0",
+        "myclabs/deep-copy": "^1.12"
+    },
+    "require-dev": {
+        "pestphp/pest": "^2.34.8",
+        "qossmic/deptrac": "^2.0.1"
+    }
+}
