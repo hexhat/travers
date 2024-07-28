@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * At any Articles object iteration you have the following options:
+ * - Set it back, using set() method
+ * - Iterate over it using foreach - this will create a copy, not a reference, so you will need to set() its copy
+ * - Iterate over body using mapBody
+ * - Grab it directly using get() method
+ * - Print the object to get JSON string - can be useful in the closure/handler
+ */
+
 namespace Travers;
 
 use Spatie\YamlFrontMatter\YamlFrontMatter;
@@ -38,6 +47,11 @@ class Articles implements ArticlesInterface
         $this->dir = getFirstValidPath($blog_dir);
         $this->articles = $this->fsLoadArticles(scandir($this->dir));
         $this->keys = array_keys($this->articles);
+    }
+
+    public function __toString(): string
+    {
+        return json_encode($this->articles);
     }
 
     /**
@@ -126,6 +140,13 @@ class Articles implements ArticlesInterface
         return array_combine(array_map(function($file) {
             return $this->dir . '/' . $file;
         }, $md_files), $result);
+    }
+
+    public function mapBody(callable $callback): void
+    {
+        foreach ($this->keys as $key) {
+            $this->articles[$key] = $callback($this->articles[$key]);
+        }
     }
 
     /**

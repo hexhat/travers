@@ -22,15 +22,12 @@ class Middleware implements MiddlewareInterface
         text('Hello from TestModule2!');
         text(__FILE__);
 
-        $result = [];
-        foreach ($articles as $path => $article) {
-            $result[$path] = [
-                'matter' => $article['matter'],
-                'body' => $this->commonmark->convert($article['body'])->getContent()
-            ];
-        }
+        $articles->mapBody(function ($article) {
+            $article['body'] = $this->commonmark->convert($article['body'])->getContent();
+            return $article;
+        });
 
-        $articles->set($result);
+        //$articles->set($result);
 
         return $articles;
     }

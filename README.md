@@ -8,6 +8,11 @@ The config file is very simple. It consists of rules, each rule being a chain of
 
 Travers has only one hardcoded rule: the source folder is flat and contains markdown files with YAML frontmatter.
 
+## Requirements
+- Composer
+- Latest stable PHP available
+
+
 ## How to get started?
 ```shell
 git clone https://github.com/hexhat/travers.git
@@ -24,7 +29,9 @@ composer install
 - [ ] Add dotenv and versioning
 - [ ] Clean .gitignore
 - [ ] Fix all TODOs
+- [ ] Add middleware wrapper for extend
 - [ ] Add config pretty-print
+- [ ] Add facade for closure inside `Articles` object
 - [ ] Configure `dev:` namespace
   - [ ] Add rest of the dev commands
 - [x] Design the config file
