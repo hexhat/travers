@@ -130,7 +130,6 @@ fabric.properties
 /src/Travers/Commands/DevPrintRawArticles.php
 /src/Travers/Commands/DevRunHandler.php
 /src/Travers/Commands/DevRunMiddleware.php
-/src/Travers/Commands/DevValidateConfig.php
 /src/Travers/Commands/GetArticlesNew.php
 /src/Travers/Commands/RemovePreviewColors.php
 /src/Travers/Commands/DevTest.php

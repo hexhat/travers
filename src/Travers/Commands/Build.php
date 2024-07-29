@@ -16,10 +16,10 @@ class Build extends CommandWrapper
         $this
             ->setName('build')
             ->setDescription('Run main building loop process');
-        parent::configure_config();
-        parent::configure_source();
-        parent::configure_templates();
-        parent::configure_result();
+        parent::configure__config();
+        parent::configure__source();
+        parent::configure__templates();
+        parent::configure__result();
     }
 
     final protected function execute(InputInterface $input, OutputInterface $output): int

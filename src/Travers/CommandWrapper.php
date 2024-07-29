@@ -19,7 +19,7 @@ abstract class CommandWrapper extends Command
      * This should be parented at the end of each Command that interacts with the config.
      * @return void
      */
-    protected function configure_config(): void
+    protected function configure__config(): void
     {
         $this->addOption(
             name: 'config',
@@ -30,7 +30,7 @@ abstract class CommandWrapper extends Command
         );
     }
 
-    protected function configure_source(): void
+    protected function configure__source(): void
     {
         $this->addOption(
             name: 'source',
@@ -41,7 +41,7 @@ abstract class CommandWrapper extends Command
         );
     }
 
-    protected function configure_templates(): void
+    protected function configure__templates(): void
     {
         $this->addOption(
             name: 'templates',
@@ -52,7 +52,7 @@ abstract class CommandWrapper extends Command
         );
     }
 
-    protected function configure_result(): void
+    protected function configure__result(): void
     {
         $this->addOption(
             name: 'result',
