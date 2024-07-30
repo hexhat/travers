@@ -37,7 +37,7 @@ abstract class CommandWrapper extends Command
             shortcut: 's',
             mode: InputOption::VALUE_REQUIRED,
             description: 'Path to markdown source dir',
-            default: getenv('HOME') . '/obsidian/blog'
+            default: __DIR__ . '/../../fixtures/markdown-sources'
         );
     }
 

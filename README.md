@@ -71,6 +71,7 @@ composer install
 - [ ] Docker build rule
   - [ ] Completion script
 - [ ] Create a logo
+- [ ] Draw a flow scheme
 - Ideas (or tasks after `v1.0.0` release)
   - [ ] Add [changelog](https://keepachangelog.com/en/1.1.0/)
   - [ ] Experimental `*` branch

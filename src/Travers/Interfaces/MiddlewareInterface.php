@@ -8,7 +8,7 @@ interface MiddlewareInterface
      * This is a good place to init vendor objects.
      * No need for DI, module is representing corresponding vendor library in most cases anyway.
      */
-    public function __construct();
+    // public function __construct();
 
     /**
      * Dynamic middleware loading entry point.
