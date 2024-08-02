@@ -3,15 +3,13 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use Symfony\Component\ErrorHandler\Debug;
 use Symfony\Component\Console\Application;
 use DeepCopy\DeepCopy;
-
-Debug::enable();
 
 $app = new Application('Travers | 🏇 |', '0.1.0');
 
 $GLOBALS['copier'] = new DeepCopy();
 
 registerCommands($app, __DIR__ . '/../src/Travers/Commands');
+
 $app->run();

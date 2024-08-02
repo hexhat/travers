@@ -7,6 +7,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\ErrorHandler\Debug;
 
 abstract class CommandWrapper extends Command
 {
@@ -76,6 +77,9 @@ abstract class CommandWrapper extends Command
         $GLOBALS['current_command_i'] = $input;
         $GLOBALS['current_command_o'] = $output;
 
+        // Set SymfonyDebug at max verbosity level
+        io()->isDebug() && Debug::enable();
+
         // Set options, so child commands be able to access it
         if ($input->hasOption('config')) {
             $this->option__config_path = $input->getOption('config');
@@ -90,7 +94,7 @@ abstract class CommandWrapper extends Command
             $this->option__dir_result_path = $input->getOption('result');
         }
 
-        // Unix status code
+        // Return unix status code
         return 0;
     }
 }
