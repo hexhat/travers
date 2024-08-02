@@ -38,6 +38,7 @@ composer install
 - [ ] Add global post-install after all rules
 - [ ] Add `dev` config for parcel rules
 - [ ] Default feature-rich template
+- [ ] Implement documentation of middleware config (reflection)
 - [ ] Previous `Articles` versions array
 - [x] Add Symfony Console
 - [ ] Enable Symfony Debug at debug verbosity level
@@ -61,6 +62,7 @@ composer install
   - [ ] Refactor `Articles` workflow
 - [ ] Node integration
 - [ ] Add more verbose/debug info
+- [ ] Add optional flag for user's middlewares folder
 - [x] Init Makefile for modules
   - [x] Add to composer
 - [ ] Readme
@@ -83,4 +85,5 @@ composer install
     - [ ] Old tests must be fully compatible without changes
   - [ ] Add Middleware template command (+gitignore)
   - [ ] Add Handler template command (+gitignore)
+  - [ ] Add support for grabbing files only with specific YAML frontmatter key-value
   - [ ] Add Command template command

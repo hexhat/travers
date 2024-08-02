@@ -11,6 +11,11 @@ interface MiddlewareInterface
     // public function __construct();
 
     /**
+     * @return string Return __FILE__.
+     */
+    public function setFilePath(): string;
+
+    /**
      * Dynamic middleware loading entry point.
      * @param ArticlesInterface $articles Input Articles object from the Kernel or from an above middleware.
      * @return ArticlesInterface Output mutated Articles object to the Kernel or to a below middleware.

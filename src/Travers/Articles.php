@@ -1,10 +1,10 @@
 <?php
 
-/**
+/** TODO refactor this to docblocks
  * At any Articles object iteration you have the following options:
  * - Set it back, using set() method
  * - Iterate over it using foreach - this will create a copy, not a reference, so you will need to set() its copy
- * - Iterate over body using mapBody
+ * - Iterate over primary elements (body, matter, +) using method map()
  * - Grab it directly using get() method
  * - Print the object to get JSON string - can be useful in the closure/handler
  */
@@ -142,7 +142,7 @@ class Articles implements ArticlesInterface
         }, $md_files), $result);
     }
 
-    public function mapBody(callable $callback): void
+    public function map(callable $callback): void
     {
         foreach ($this->keys as $key) {
             $this->articles[$key] = $callback($this->articles[$key]);

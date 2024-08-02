@@ -9,13 +9,16 @@ class Middleware implements MiddlewareInterface
 {
     public function __construct() {}
 
+    public function setFilePath(): string
+    {
+        return __FILE__;
+    }
+
     public function main(ArticlesInterface $articles): ArticlesInterface
     {
-        text('Hello from TestModule2!');
-        text(__FILE__);
-
-        $articles->mapBody(function ($article) {
+        $articles->map(function ($article) {
             (gettype($article['body']) === 'integer') ? $article['body'] += 1 : $article['body'] = 1;
+            (gettype($article['matter']) === 'integer') ? $article['matter'] += 1 : $article['matter'] = 1;
             return $article;
         });
 

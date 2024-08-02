@@ -17,12 +17,17 @@ class Middleware implements MiddlewareInterface
         $this->commonmark = new CommonMarkConverter();
     }
 
+    public function setFilePath(): string
+    {
+        return __FILE__;
+    }
+
     public function main(ArticlesInterface $articles): ArticlesInterface
     {
         text('Hello from TestModule2!');
         text(__FILE__);
 
-        $articles->mapBody(function ($article) {
+        $articles->map(function ($article) {
             $article['body'] = $this->commonmark->convert($article['body'])->getContent();
             return $article;
         });

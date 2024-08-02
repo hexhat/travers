@@ -10,11 +10,13 @@ class Middleware implements MiddlewareInterface
 {
     public function __construct() { }
 
+    public function setFilePath(): string
+    {
+        return __FILE__;
+    }
+
     public function main(ArticlesInterface $articles): ArticlesInterface
     {
-        text('Hello from TestModule1!');
-        text(__FILE__);
-
         $result = [];
         foreach ($articles as $path => $article) {
             $result[$path] = [
