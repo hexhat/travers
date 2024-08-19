@@ -42,6 +42,7 @@
     },
     "require-dev": {
         "pestphp/pest": "^2.34.8",
-        "qossmic/deptrac": "^2.0.1"
+        "qossmic/deptrac": "^2.0.1",
+        "phpstan/phpstan": "^1.11"
     }
 }

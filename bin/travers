@@ -2,11 +2,12 @@
 <?php
 
 require __DIR__ . '/../vendor/autoload.php';
+$version = fgets(fopen(__DIR__ . '/../.version', 'r'));
 
 use Symfony\Component\Console\Application;
 use DeepCopy\DeepCopy;
 
-$app = new Application('Travers | 🏇 |', '0.1.0');
+$app = new Application('Travers | 🏇 |', $version);
 
 $GLOBALS['copier'] = new DeepCopy();
 
