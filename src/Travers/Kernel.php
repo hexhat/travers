@@ -21,21 +21,22 @@ final class Kernel
 
     static public function runMiddlewaresChain(ArticlesInterface $articles, array $middlewares): ArticlesInterface
     {
-        foreach ($middlewares as $middlewareConfig) {
-            $middlewareName = is_string($middlewareConfig) ? $middlewareConfig : $middlewareConfig['name'];
-            $middlewareClass = 'Travers\\Middlewares\\' . $middlewareName . '\\Middleware';
+        foreach ($middlewares as $middleware_config) {
+            $middleware_name = is_string($middleware_config) ? $middleware_config : $middleware_config['name'];
+            $middleware_class = 'Travers\\Middlewares\\' . $middleware_name . '\\Middleware';
 
-            if (class_exists($middlewareClass)) {
-                $middleware = new $middlewareClass();
+            if (class_exists($middleware_class)) {
+                $middleware = new $middleware_class();
                 if (method_exists($middleware, 'main')) {
-                    textVerbose('Entering middleware: ' . $middlewareName);
+                    textVerbose('Entering middleware: ' . $middleware_name);
                     $articles = $middleware->main($articles);
                 } else {
-                    throw new InvalidArgumentException("Method 'main' not found in $middlewareClass");
+                    throw new InvalidArgumentException("Method 'main' not found in $middleware_class");
                 }
             } else {
-                throw new InvalidArgumentException("Middleware class $middlewareClass not found");
+                throw new InvalidArgumentException("Middleware class $middleware_class not found");
             }
+
             unset($middleware);
         }
 

@@ -118,7 +118,6 @@ fabric.properties
 /tests/
 /TODO/
 /README.dev.md
-/TODO.md
 /.idea/
 /.git-mvp/
 /deptrac.yaml
