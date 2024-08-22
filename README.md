@@ -1,6 +1,4 @@
-Main origin of the project at [sourcehut](https://git.sr.ht/~hexhat/travers).
-
----
+> **Project development and tickets are hosted at [sourcehut](https://git.sr.ht/~hexhat/travers).**
 
 This is an alpha preview. The skeleton of the project is ready, but many things still need to be done.
 
@@ -15,6 +13,7 @@ Travers has only one hardcoded rule: the source folder is flat and contains mark
 ## Requirements
 - Composer
 - Latest stable PHP available
+- Some middlewares require Node/NPM
 
 
 ## How to get started?

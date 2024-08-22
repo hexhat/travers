@@ -38,10 +38,3 @@ function templateRender(string $path, $props): string
 - **Web Applications**: Essential for creating interactive applications like forums, social media platforms, and blogs. 
 
 The PHP community offers extensive documentation, frameworks, and libraries, which contribute to the language's ongoing popularity and versatility in web development.
-
-
-
-
-
-
-

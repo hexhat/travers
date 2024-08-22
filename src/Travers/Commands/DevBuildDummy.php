@@ -15,8 +15,7 @@ class DevBuildDummy extends CommandWrapper
     {
         $this
             ->setName('dev:build-dummy')
-            ->setDescription('For internal framework tests');
-        parent::configure__config();
+            ->setDescription('Run building loop on dummy middleware without config file');
         parent::configure__source();
     }
 

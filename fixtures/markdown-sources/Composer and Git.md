@@ -29,4 +29,3 @@ Using Composer enhances productivity by ensuring that all necessary libraries ar
 - **Collaboration**: Facilitates teamwork by enabling multiple developers to work on the same project.
 
 Integrating _Composer_ and _Git_ in a PHP project ensures efficient management of dependencies and a robust version control system. This combination promotes better code quality, collaboration, and project scalability.
-

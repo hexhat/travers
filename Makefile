@@ -24,4 +24,8 @@ init:
 	done
 
 pkgbuild:
-	echo 'arch linux build system'
+	echo 'arch linux build system' # TODO
+
+
+clean:
+	echo 'clean vendor/npm folders' # TODO

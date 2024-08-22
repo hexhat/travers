@@ -5,8 +5,7 @@ composer.phar
 /app/phpunit.xml
 /phpunit.xml
 /.phpactor.json
-
-/.git-mvp/
+/reports/
 /.idea/
 
 /tests/
@@ -16,9 +15,4 @@ composer.phar
 /src/Travers/App.php
 /src/Travers/Middlewares/CommonMark/
 /src/Travers/Middlewares/MathJax/
-/src/Travers/Commands/DevPrintArticles.php
-/src/Travers/Commands/DevPrintRawArticles.php
-/src/Travers/Commands/GetArticlesNew.php
-/src/Travers/Commands/RemovePreviewColors.php
-/src/Travers/Commands/DevTest.php
 /src/Travers/Middlewares/FrontmatterValidationModule.txt

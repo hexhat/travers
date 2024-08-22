@@ -23,4 +23,3 @@ Nature provides _essential resources_ like water, air, and food, which are vital
 - **Health Benefits**: Access to natural environments promotes physical and mental well-being.
 
 Protecting nature ensures the sustainability of these resources for future generations. Conservation initiatives, sustainable practices, and environmental education are key strategies in preserving the natural world.
-
