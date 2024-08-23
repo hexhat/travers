@@ -8,7 +8,9 @@ It has a rich modular system (middlewares) that mutates your markdown source fil
 
 The config file is very simple. It consists of rules, each rule being a chain of middlewares and a closure as an instruction on how to template your result files.
 
-Travers has only one hardcoded rule: the source folder is flat and contains markdown files with YAML frontmatter.
+Travers has only two hardcoded rules:
+1. The source folder is flat list of markdown files, each representing the article.
+2. Control over structure and other metadata is done by parsing YAML frontmatter within each article.
 
 ## Requirements
 - Composer

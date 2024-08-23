@@ -19,7 +19,11 @@ class DevPrintRawArticles extends CommandWrapper
     final protected function execute(InputInterface $input, OutputInterface $output): int
     {
         parent::execute($input, $output);
-        dump(new Articles($this->option__dir_source_path));
+        io()->writeln(
+            '<info>' .
+            var_export((new Articles($this->option__dir_source_path)), true) .
+            '</info>'
+        );
         return 0;
     }
 }
