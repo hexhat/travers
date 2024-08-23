@@ -2,8 +2,6 @@ composer.phar
 /vendor/
 .phpunit.result.cache
 .phpunit.cache
-/app/phpunit.xml
-/phpunit.xml
 /.phpactor.json
 /reports/
 /.idea/
