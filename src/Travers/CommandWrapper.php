@@ -82,15 +82,36 @@ abstract class CommandWrapper extends Command
 
         // Set options, so child commands be able to access it
         if ($input->hasOption('config')) {
-            $this->option__config_path = $input->getOption('config');
+            $file = $input->getOption('config');
+            if (!is_file($file)) {
+                throw new \InvalidArgumentException(
+                    "The specified config file '{$file}' does not exist."
+                );
+            }
+            $this->option__config_path = $file;
         }
         if ($input->hasOption('source')) {
-            $this->option__dir_source_path = $input->getOption('source');
+            $dir = $input->getOption('source');
+            if (!is_dir($dir)) {
+                throw new \InvalidArgumentException(
+                    "The specified source folder '{$dir}' does not exist."
+                );
+            }
+            $this->option__dir_source_path = $dir;
         }
         if ($input->hasOption('templates')) {
-            $this->option__dir_templates_path = $input->getOption('templates');
+            $dir = $input->getOption('templates');
+            /* TODO uncomment later
+            if (!is_dir($dir)) {
+                throw new \InvalidArgumentException(
+                    "The specified templates folder '{$dir}' does not exist."
+                );
+            }
+            */
+            $this->option__dir_templates_path = $dir;
         }
         if ($input->hasOption('result')) {
+            // TODO verbose: if folder not exists print message
             $this->option__dir_result_path = $input->getOption('result');
         }
 

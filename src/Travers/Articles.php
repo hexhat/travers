@@ -44,7 +44,7 @@ class Articles implements ArticlesInterface
      */
     public function __construct(string $blog_dir)
     {
-        $this->dir = getFirstValidPath($blog_dir);
+        $this->dir = $blog_dir;
         $this->articles = $this->fsLoadArticles(scandir($this->dir));
         $this->keys = array_keys($this->articles);
     }
@@ -119,7 +119,7 @@ class Articles implements ArticlesInterface
             return $is_file && $is_md;
         });
 
-        text('Loading files from your markdown vault');
+        textVerbose('Loading files from your markdown vault');
         io()->progressStart(count($md_files));
 
         $result = array_map(function($file) {
