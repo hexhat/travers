@@ -1,3 +1,5 @@
+.PHONY: init tests linter pkgbuild clean push-all-remotes-and-tags
+
 DIRS := ./src/Travers/Middlewares/* ./src/Travers/Handlers/*
 
 linter-psr2:
@@ -6,10 +8,8 @@ linter-psr2:
 linter:
 	@phpcs .
 
-test:
+tests:
 	@./vendor/bin/pest
-
-all: init
 
 init:
 	@for dir in $(DIRS); do \
@@ -29,3 +29,9 @@ pkgbuild:
 
 clean:
 	echo 'clean vendor/npm folders' # TODO
+
+push-all-remotes-and-tags:
+	@for remote in $$(git remote); do \
+		git push $$remote --all; \
+		git push $$remote --tags; \
+	done
