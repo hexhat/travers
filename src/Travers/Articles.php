@@ -51,7 +51,20 @@ class Articles implements ArticlesInterface
 
     public function __toString(): string
     {
-        return json_encode($this->articles);
+        if (input()->hasOption('format')) {
+            $format = input()->getOption('format');
+            switch ($format) {
+                case 'string':
+                    return ('<info>' . var_export($this, true) . '</info>');
+                case 'json':
+                    return json_encode($this->articles);
+                case 'pretty':
+                    return 'Pretty print!'; # TODO
+            }
+        }
+        throw new \InvalidArgumentException(
+            'The specified print format does not exist.'
+        );
     }
 
     /**
