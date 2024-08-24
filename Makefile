@@ -1,6 +1,6 @@
 .PHONY: init tests linter pkgbuild clean push-all-remotes-and-tags
 
-DIRS := ./src/Travers/Middlewares/* ./src/Travers/Handlers/*
+DIRS := ./src/Travers/Middlewares/*
 
 linter-psr2:
 	@phpcs --standard=PSR2 .

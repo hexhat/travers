@@ -81,8 +81,8 @@ abstract class CommandWrapper extends Command
         io()->isDebug() && Debug::enable();
 
         // Set options, so child commands be able to access it
-        if ($input->hasOption('config')) {
-            $file = $input->getOption('config');
+        if (input()->hasOption('config')) {
+            $file = input()->getOption('config');
             if (!is_file($file)) {
                 throw new \InvalidArgumentException(
                     "The specified config file '{$file}' does not exist."
@@ -90,8 +90,8 @@ abstract class CommandWrapper extends Command
             }
             $this->option__config_path = $file;
         }
-        if ($input->hasOption('source')) {
-            $dir = $input->getOption('source');
+        if (input()->hasOption('source')) {
+            $dir = input()->getOption('source');
             if (!is_dir($dir)) {
                 throw new \InvalidArgumentException(
                     "The specified source folder '{$dir}' does not exist."
@@ -99,8 +99,8 @@ abstract class CommandWrapper extends Command
             }
             $this->option__dir_source_path = $dir;
         }
-        if ($input->hasOption('templates')) {
-            $dir = $input->getOption('templates');
+        if (input()->hasOption('templates')) {
+            $dir = input()->getOption('templates');
             /* TODO uncomment later
             if (!is_dir($dir)) {
                 throw new \InvalidArgumentException(
@@ -110,9 +110,9 @@ abstract class CommandWrapper extends Command
             */
             $this->option__dir_templates_path = $dir;
         }
-        if ($input->hasOption('result')) {
+        if (input()->hasOption('result')) {
             // TODO verbose: if folder not exists print message
-            $this->option__dir_result_path = $input->getOption('result');
+            $this->option__dir_result_path = input()->getOption('result');
         }
 
         // Return unix status code

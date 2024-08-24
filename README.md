@@ -1,4 +1,4 @@
-> **Project development and tickets are hosted at [sourcehut](https://git.sr.ht/~hexhat/travers).**
+> **Project development and [tickets](https://todo.sr.ht/~hexhat/travers) are hosted at [sourcehut](https://git.sr.ht/~hexhat/travers).**
 
 This is an alpha preview. The skeleton of the project is ready, but many things still need to be done.
 
@@ -23,7 +23,7 @@ Travers has only two hardcoded rules:
 git clone https://github.com/hexhat/travers.git
 cd travers
 
-# Run dependency install of PHP, Middlewares & Handlers
+# Run dependency install of Travers and its middlewares
 composer install
 
 # Options are described in the help pages

@@ -20,7 +20,7 @@ describe('Command <fg=yellow>dev:print-raw-articles</>:', function () {
         expect($commandTester->getStatusCode())->toBe(0);
     });
 
-    test('should exist fields for the iterator', function () use (&$commandTester) {
+    test('iterator fields should be present', function () use (&$commandTester) {
         $commandTester->execute([]);
         $output = $commandTester->getDisplay();
 
