@@ -2,6 +2,7 @@
 
 namespace Travers\Commands;
 
+use Symfony\Component\Console\Attribute\AsCommand;
 use Travers\Articles;
 use Travers\Kernel;
 use Travers\CommandWrapper;
@@ -9,13 +10,16 @@ use Travers\CommandWrapper;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+#[AsCommand(
+    name: 'dev:build-dummy',
+    description: 'Run building loop on <fg=yellow>DummyMiddleware</> (without <fg=yellow>config</> file)',
+    aliases: ['dbd'],
+    hidden: false
+)]
 class DevBuildDummy extends CommandWrapper
 {
     final protected function configure(): void
     {
-        $this
-            ->setName('dev:build-dummy')
-            ->setDescription('Run building loop on dummy middleware without config file');
         parent::configure__source();
     }
 

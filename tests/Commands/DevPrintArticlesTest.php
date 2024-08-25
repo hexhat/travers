@@ -2,16 +2,16 @@
 
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Tester\CommandTester;
-use Travers\Commands\DevPrintRawArticles;
+use Travers\Commands\DevPrintArticles;
 
-describe('<fg=yellow>dev:print-raw-articles --format=string</>:', function () {
+describe('<fg=yellow>dev:print-articles --format=string</>:', function () {
     $application = null;
     $command_tester = null;
 
     beforeEach(function () use (&$application, &$command_tester) {
         $application = initApp(appVersion());
-        $application->add(new DevPrintRawArticles());
-        $command = $application->find('dev:print-raw-articles');
+        $application->add(new DevPrintArticles());
+        $command = $application->find('dev:print-articles');
         $command_tester = new CommandTester($command);
     });
 
@@ -58,15 +58,15 @@ describe('<fg=yellow>dev:print-raw-articles --format=string</>:', function () {
     });
 });
 
-describe('<fg=yellow>dev:print-raw-articles --format=json</>:', function () {
+describe('<fg=yellow>dev:print-articles --format=json</>:', function () {
     $application = null;
     $command_tester = null;
     $opts = ['--format' => 'json'];
 
     beforeEach(function () use (&$application, &$command_tester) {
         $application = initApp(appVersion());
-        $application->add(new DevPrintRawArticles());
-        $command = $application->find('dev:print-raw-articles');
+        $application->add(new DevPrintArticles());
+        $command = $application->find('dev:print-articles');
         $command_tester = new CommandTester($command);
     });
 
@@ -104,15 +104,15 @@ describe('<fg=yellow>dev:print-raw-articles --format=json</>:', function () {
     });
 });
 
-describe('<fg=yellow>dev:print-raw-articles --format=pretty</>:', function () {
+describe('<fg=yellow>dev:print-articles --format=pretty</>:', function () {
     $application = null;
     $command_tester = null;
     $opts = ['--format' => 'pretty'];
 
     beforeEach(function () use (&$application, &$command_tester) {
         $application = initApp(appVersion());
-        $application->add(new DevPrintRawArticles());
-        $command = $application->find('dev:print-raw-articles');
+        $application->add(new DevPrintArticles());
+        $command = $application->find('dev:print-articles');
         $command_tester = new CommandTester($command);
     });
 
@@ -145,15 +145,15 @@ describe('<fg=yellow>dev:print-raw-articles --format=pretty</>:', function () {
     });
 });
 
-describe('<fg=yellow>dev:print-raw-articles --format=pretty -v</>:', function () {
+describe('<fg=yellow>dev:print-articles --format=pretty -v</>:', function () {
     $application = null;
     $command_tester = null;
     $opts = ['--format' => 'pretty'];
 
     beforeEach(function () use (&$application, &$command_tester) {
         $application = initApp(appVersion());
-        $application->add(new DevPrintRawArticles());
-        $command = $application->find('dev:print-raw-articles');
+        $application->add(new DevPrintArticles());
+        $command = $application->find('dev:print-articles');
         $command_tester = new CommandTester($command);
     });
 

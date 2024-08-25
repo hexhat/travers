@@ -2,6 +2,7 @@
 
 namespace Travers\Commands;
 
+use Symfony\Component\Console\Attribute\AsCommand;
 use Travers\Articles;
 use Travers\Kernel;
 use Travers\CommandWrapper;
@@ -10,14 +11,16 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+#[AsCommand(
+    name: 'dev:run-middleware',
+    description: 'Run & dump single <fg=yellow>middleware</>',
+    aliases: ['drm'],
+    hidden: false
+)]
 class DevRunMiddleware extends CommandWrapper
 {
     final protected function configure(): void
     {
-        $this
-            ->setName('dev:run-middleware')
-            ->setDescription('Run & dump single middleware');
-
         $this->addOption(
             name: 'middleware',
             shortcut: 'm',

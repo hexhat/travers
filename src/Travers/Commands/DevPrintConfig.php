@@ -2,19 +2,25 @@
 
 namespace Travers\Commands;
 
+use Symfony\Component\Console\Attribute\AsCommand;
 use Travers\Kernel;
 use Travers\CommandWrapper;
 
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+// TODO do [string, json, pretty] formats
+
+#[AsCommand(
+    name: 'dev:print-config',
+    description: 'Parse <fg=yellow>config</> & print it',
+    aliases: ['dpc'],
+    hidden: false
+)]
 class DevPrintConfig extends CommandWrapper
 {
     final protected function configure(): void
     {
-        $this
-            ->setName('dev:print-config')
-            ->setDescription('Parse config and pretty-print it');
         parent::configure__config();
     }
 

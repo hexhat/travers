@@ -2,19 +2,23 @@
 
 namespace Travers\Commands;
 
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Travers\Articles;
 use Travers\CommandWrapper;
 
-class DevPrintRawArticles extends CommandWrapper
+#[AsCommand(
+    name: 'dev:print-articles',
+    description: 'Dump raw <fg=yellow>Articles</> object',
+    aliases: ['dpa'],
+    hidden: false
+)]
+class DevPrintArticles extends CommandWrapper
 {
     final protected function configure(): void
     {
-        $this
-            ->setName('dev:print-raw-articles')
-            ->setDescription('Dump raw <fg=yellow>Articles</> object');
         $this->addOption(
             name: 'format',
             shortcut: 'f',

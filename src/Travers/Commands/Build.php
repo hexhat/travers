@@ -2,6 +2,7 @@
 
 namespace Travers\Commands;
 
+use Symfony\Component\Console\Attribute\AsCommand;
 use Travers\Articles;
 use Travers\Kernel;
 use Travers\CommandWrapper;
@@ -9,13 +10,15 @@ use Travers\CommandWrapper;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+#[AsCommand(
+    name: 'build',
+    description: 'Run main building loop process',
+    hidden: false
+)]
 class Build extends CommandWrapper
 {
     final protected function configure(): void
     {
-        $this
-            ->setName('build')
-            ->setDescription('Run main building loop process');
         parent::configure__config();
         parent::configure__source();
         parent::configure__templates();
