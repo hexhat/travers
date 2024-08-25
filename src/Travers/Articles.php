@@ -56,10 +56,42 @@ class Articles implements ArticlesInterface
             switch ($format) {
                 case 'string':
                     return ('<info>' . var_export($this, true) . '</info>');
+
                 case 'json':
                     return json_encode($this->articles);
+
                 case 'pretty':
-                    return 'Pretty print!'; # TODO
+                    $this->is_articles_extended && io()->warning('Articles object was extended');
+
+                    io()->text('<fg=red>Source folder</>');
+                    io()->text($this->dir);
+
+                    io()->isVerbose() && io()->newLine();
+                    textVerbose('<fg=red>Iterator keys</>');
+                    io()->isVerbose() && io()->listing($this->keys);
+
+                    textVerbose('<fg=red>Start iterator position is </>' . $this->position);
+                    io()->newLine();
+
+                    foreach ($this as $path => $article) {
+                        textVerbose('<fg=red>Current iterator position is </>' . $this->position);
+                        $matter = [];
+                        foreach ($article['matter'] as $name => $value) {
+                            $matter[] = [$name => json_encode($value)];
+                        }
+                        io()->text('<fg=red>' . $path . '</>');
+                        io()->text(
+                            '<fg=green>Content preview: </>' .
+                            trim(substr($article['body'], 0, 60)) .
+                            '...'
+                        );
+                        io()->definitionList(...$matter);
+                    }
+
+                    textVerbose('<fg=red>End iterator position is </>' . $this->position);
+                    io()->newLine();
+
+                    return '<fg=yellow>Exiting pretty print</>';
             }
         }
         throw new \InvalidArgumentException(
@@ -133,14 +165,16 @@ class Articles implements ArticlesInterface
         });
 
         textVerbose('Loading files from your markdown vault');
-        io()->progressStart(count($md_files));
+
+        // TODO think in which cases progress should be shown
+        //io()->progressStart(count($md_files));
 
         $result = array_map(function($file) {
             $file_path = $this->dir . '/' . $file;
             $file_content = file_get_contents($file_path);
             $parsed = YamlFrontMatter::parse($file_content);
 
-            io()->progressAdvance();
+            //io()->progressAdvance();
 
             return [
                 'matter' => $parsed->matter(),
@@ -148,7 +182,7 @@ class Articles implements ArticlesInterface
             ];
         }, $md_files);
 
-        io()->progressFinish();
+        //io()->progressFinish();
 
         return array_combine(array_map(function($file) {
             return $this->dir . '/' . $file;
