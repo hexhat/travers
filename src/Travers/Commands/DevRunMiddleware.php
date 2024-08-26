@@ -4,6 +4,7 @@ namespace Travers\Commands;
 
 use Symfony\Component\Console\Attribute\AsCommand;
 use Travers\Articles;
+use Travers\IO;
 use Travers\Kernel;
 use Travers\CommandWrapper;
 
@@ -39,7 +40,7 @@ class DevRunMiddleware extends CommandWrapper
 
         $initial_articles_object = new Articles($this->option__dir_source_path);
 
-        $option = $input->getOption('middleware');
+        $option = IO::input()->getOption('middleware');
 
         dump(Kernel::runMiddlewaresChain($initial_articles_object, [$option]));
 

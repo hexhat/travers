@@ -8,6 +8,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Travers\Articles;
 use Travers\CommandWrapper;
+use Travers\IO;
 
 #[AsCommand(
     name: 'dev:print-articles',
@@ -31,7 +32,7 @@ class DevPrintArticles extends CommandWrapper
     final protected function execute(InputInterface $input, OutputInterface $output): int
     {
         parent::execute($input, $output);
-        io()->text((new Articles($this->option__dir_source_path)));
+        IO::text((new Articles($this->option__dir_source_path)));
         return 0;
     }
 }

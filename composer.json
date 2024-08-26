@@ -8,8 +8,7 @@
         },
         "files": [
             "src/bootstrap.php",
-            "src/helpers.php",
-            "src/helpers_io.php"
+            "src/helpers.php"
         ]
     },
     "scripts": {

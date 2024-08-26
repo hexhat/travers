@@ -15,7 +15,7 @@ Travers has only two hardcoded rules:
 ## Requirements
 - Composer
 - Latest stable PHP available
-- Some middlewares require Node/NPM
+- Some middlewares require node/npm
 
 
 ## How to get started?

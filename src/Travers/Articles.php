@@ -51,8 +51,8 @@ class Articles implements ArticlesInterface
 
     public function __toString(): string
     {
-        if (input()->hasOption('format')) {
-            $format = input()->getOption('format');
+        if (IO::input()->hasOption('format')) {
+            $format = IO::input()->getOption('format');
             switch ($format) {
                 case 'string':
                     return ('<info>' . var_export($this, true) . '</info>');
@@ -61,35 +61,35 @@ class Articles implements ArticlesInterface
                     return json_encode($this->articles);
 
                 case 'pretty':
-                    $this->is_articles_extended && io()->warning('Articles object was extended');
+                    $this->is_articles_extended && IO::warning('Articles object was extended');
 
-                    io()->text('<fg=red>Source folder</>');
-                    io()->text($this->dir);
+                    IO::text('<fg=red>Source folder</>');
+                    IO::text($this->dir);
 
-                    io()->isVerbose() && io()->newLine();
-                    textVerbose('<fg=red>Iterator keys</>');
-                    io()->isVerbose() && io()->listing($this->keys);
+                    IO::newLineVerbose();
+                    IO::textVerbose('<fg=red>Iterator keys</>');
+                    IO::listing($this->keys);
 
-                    textVerbose('<fg=red>Start iterator position is </>' . $this->position);
-                    io()->newLine();
+                    IO::textVerbose('<fg=red>Start iterator position is </>' . $this->position);
+                    IO::newLine();
 
                     foreach ($this as $path => $article) {
-                        textVerbose('<fg=red>Current iterator position is </>' . $this->position);
+                        IO::textVerbose('<fg=red>Current iterator position is </>' . $this->position);
                         $matter = [];
                         foreach ($article['matter'] as $name => $value) {
                             $matter[] = [$name => json_encode($value)];
                         }
-                        io()->text('<fg=red>' . $path . '</>');
-                        io()->text(
+                        IO::text('<fg=red>' . $path . '</>');
+                        IO::text(
                             '<fg=green>Content preview: </>' .
                             trim(substr($article['body'], 0, 60)) .
                             '...'
                         );
-                        io()->definitionList(...$matter);
+                        IO::definitionList(...$matter);
                     }
 
-                    textVerbose('<fg=red>End iterator position is </>' . $this->position);
-                    io()->newLine();
+                    IO::textVerbose('<fg=red>End iterator position is </>' . $this->position);
+                    IO::newLine();
 
                     return '<fg=yellow>Exiting pretty print</>';
             }
@@ -164,7 +164,7 @@ class Articles implements ArticlesInterface
             return $is_file && $is_md;
         });
 
-        textVerbose('Loading files from your markdown vault');
+        IO::textVerbose('Loading files from your markdown vault');
 
         // TODO think in which cases progress should be shown
         //io()->progressStart(count($md_files));
@@ -235,10 +235,10 @@ class Articles implements ArticlesInterface
             }
             if (count($article) > 2) {
                 $this->is_articles_extended = true;
-                textDebug('Setting articles extended flag');
+                IO::textDebug('Setting articles extended flag');
             }
         }
         $this->articles = $articles;
-        textDebug('Articles array has been set');
+        IO::textDebug('Articles array has been set');
     }
 }

@@ -3,6 +3,7 @@
 namespace Travers\Commands;
 
 use Symfony\Component\Console\Attribute\AsCommand;
+use Travers\IO;
 use Travers\Kernel;
 use Travers\CommandWrapper;
 
@@ -31,7 +32,7 @@ class DevPrintConfig extends CommandWrapper
         $rules = Kernel::validateConfig($this->option__config_path);
 
         list($headers, $rows) = $this->prepareTable($rules);
-        io()->horizontalTable($headers, $rows);
+        IO::horizontalTable($headers, $rows);
 
         return 0;
     }

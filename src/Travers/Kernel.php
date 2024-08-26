@@ -28,7 +28,7 @@ final class Kernel
             if (class_exists($middleware_class)) {
                 $middleware = new $middleware_class();
                 if (method_exists($middleware, 'main')) {
-                    textVerbose('Entering middleware: ' . $middleware_name);
+                    IO::textDebug('Entering middleware: ' . $middleware_name);
                     $articles = $middleware->main($articles);
                 } else {
                     throw new InvalidArgumentException("Method 'main' not found in $middleware_class");

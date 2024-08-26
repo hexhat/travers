@@ -5,6 +5,7 @@ namespace Travers\Middlewares\TestModule2;
 use Travers\Interfaces\ArticlesInterface;
 use Travers\Interfaces\MiddlewareInterface;
 use League\CommonMark\CommonMarkConverter;
+use Travers\IO;
 
 // TODO middleware description
 
@@ -24,8 +25,8 @@ class Middleware implements MiddlewareInterface
 
     public function main(ArticlesInterface $articles): ArticlesInterface
     {
-        text('Hello from TestModule2!');
-        text(__FILE__);
+        IO::text('Hello from TestModule2!');
+        IO::text(__FILE__);
 
         $articles->map(function ($article) {
             $article['body'] = $this->commonmark->convert($article['body'])->getContent();
