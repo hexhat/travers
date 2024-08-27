@@ -14,7 +14,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 #[AsCommand(
     name: 'dev:print-config',
-    description: 'Parse <fg=yellow>config</> & print it',
+    description: 'Parse <fg=yellow>config</> and output',
     aliases: ['dpc'],
     hidden: false
 )]

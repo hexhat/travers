@@ -12,7 +12,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 #[AsCommand(
     name: 'dev:build-dummy',
-    description: 'Run building loop on <fg=yellow>DummyMiddleware</> (without <fg=yellow>config</> file)',
+    description: 'Run building loop on a single <fg=yellow>DummyMiddleware</>',
     aliases: ['dbd'],
     hidden: false
 )]

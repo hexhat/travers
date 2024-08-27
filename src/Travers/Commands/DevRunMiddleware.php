@@ -14,7 +14,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 #[AsCommand(
     name: 'dev:run-middleware',
-    description: 'Run & dump single <fg=yellow>middleware</>',
+    description: 'Run a single <fg=yellow>middleware</> and output',
     aliases: ['drm'],
     hidden: false
 )]

@@ -12,7 +12,7 @@ use Travers\IO;
 
 #[AsCommand(
     name: 'dev:print-articles',
-    description: 'Dump raw <fg=yellow>Articles</> object',
+    description: 'Load <fg=yellow>source</> to the <fg=red>Articles</> object and output',
     aliases: ['dpa'],
     hidden: false
 )]

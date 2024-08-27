@@ -68,7 +68,7 @@ class Articles implements ArticlesInterface
 
                     IO::newLineVerbose();
                     IO::textVerbose('<fg=red>Iterator keys</>');
-                    IO::listing($this->keys);
+                    IO::listingVerbose($this->keys);
 
                     IO::textVerbose('<fg=red>Start iterator position is </>' . $this->position);
                     IO::newLine();
