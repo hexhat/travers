@@ -1,6 +1,6 @@
 <?php
 
-/** TODO refactor this to docblocks
+/** TODO refactor this to doc-blocks
  * At any Articles object iteration you have the following options:
  * - Set it back, using set() method
  * - Iterate over it using foreach - this will create a copy, not a reference, so you will need to set() its copy
@@ -45,7 +45,7 @@ class Articles implements ArticlesInterface
     public function __construct(string $blog_dir)
     {
         $this->dir = $blog_dir;
-        $this->articles = $this->fsLoadArticles(scandir($this->dir));
+        $this->articles = $this->fsLoadArticles(scandir($this->getSourceDir()));
         $this->keys = array_keys($this->articles);
     }
 
@@ -64,7 +64,7 @@ class Articles implements ArticlesInterface
                     $this->is_articles_extended && IO::warning('Articles object was extended');
 
                     IO::text('<fg=red>Source folder</>');
-                    IO::text($this->dir);
+                    IO::text($this->getSourceDir());
 
                     IO::newLineVerbose();
                     IO::textVerbose('<fg=red>Iterator keys</>');
@@ -164,8 +164,8 @@ class Articles implements ArticlesInterface
     private function fsLoadArticles(array $files): array
     {
         $md_files = array_filter($files, function($file) {
-            $is_file = is_file($this->dir . '/' . $file);
-            $is_md = pathinfo($this->dir . '/' . $file, PATHINFO_EXTENSION) === 'md';
+            $is_file = is_file($this->getSourceDir() . '/' . $file);
+            $is_md = pathinfo($this->getSourceDir() . '/' . $file, PATHINFO_EXTENSION) === 'md';
             return $is_file && $is_md;
         });
 
@@ -190,7 +190,7 @@ class Articles implements ArticlesInterface
         //io()->progressFinish();
 
         return array_combine(array_map(function($file) {
-            return $this->dir . '/' . $file;
+            return $this->getSourceDir() . '/' . $file;
         }, $md_files), $result);
     }
 
