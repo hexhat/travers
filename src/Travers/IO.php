@@ -155,7 +155,6 @@ class IO
     static public function warning(string|array $message): void
     {
         self::get()->warning($message);
-
     }
 
 

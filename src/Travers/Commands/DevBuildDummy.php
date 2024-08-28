@@ -4,6 +4,7 @@ namespace Travers\Commands;
 
 use Symfony\Component\Console\Attribute\AsCommand;
 use Travers\Articles;
+use Travers\IO;
 use Travers\Kernel;
 use Travers\CommandWrapper;
 
@@ -21,6 +22,7 @@ class DevBuildDummy extends CommandWrapper
     final protected function configure(): void
     {
         parent::configure__source();
+        parent::configure__format();
     }
 
     final protected function execute(InputInterface $input, OutputInterface $output): int
@@ -38,7 +40,8 @@ class DevBuildDummy extends CommandWrapper
                     'DummyMiddleware'
                 ],
                 'handler' => function($articles) {
-                    dump($articles);
+                    IO::textVerbose('Message from the first handler');
+                    IO::textDebug($articles);
                 }
             ],
             [
@@ -48,7 +51,8 @@ class DevBuildDummy extends CommandWrapper
                     'DummyMiddleware'
                 ],
                 'handler' => function($articles) {
-                    dump($articles);
+                    IO::textVerbose('Message from the second handler');
+                    IO::textDebug($articles);
                 }
             ],
         ];
@@ -57,6 +61,8 @@ class DevBuildDummy extends CommandWrapper
             $articles = Kernel::runMiddlewaresChain($initial_articles_object, $rule['middlewares']);
             $rule['handler']($articles);
         }
+
+        IO::text($articles);
 
         return 0;
     }
