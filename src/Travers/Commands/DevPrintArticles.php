@@ -20,13 +20,7 @@ class DevPrintArticles extends CommandWrapper
 {
     final protected function configure(): void
     {
-        $this->addOption(
-            name: 'format',
-            shortcut: 'f',
-            mode: InputOption::VALUE_REQUIRED,
-            description: 'The output format (string, json, pretty)',
-            default: 'string'
-        );
+        parent::configure__format();
         parent::configure__source();
     }
     final protected function execute(InputInterface $input, OutputInterface $output): int

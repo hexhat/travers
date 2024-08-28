@@ -15,6 +15,7 @@ abstract class CommandWrapper extends Command
     public string $option__dir_source_path;
     public string $option__dir_templates_path;
     public string $option__dir_result_path;
+    public string $option__format;
 
     /**
      * This should be parented at the end of each Command that interacts with the config.
@@ -61,6 +62,17 @@ abstract class CommandWrapper extends Command
             mode: InputOption::VALUE_REQUIRED,
             description: 'Path to result dir',
             default: (getenv('XDG_DATA_HOME') ?? getenv('HOME') . '/.local/share') . '/travers/result/' . time()
+        );
+    }
+
+    protected function configure__format(): void
+    {
+        $this->addOption(
+            name: 'format',
+            shortcut: 'f',
+            mode: InputOption::VALUE_REQUIRED,
+            description: 'The output format (string, json, pretty)',
+            default: 'string'
         );
     }
 
@@ -113,6 +125,9 @@ abstract class CommandWrapper extends Command
         if (IO::input()->hasOption('result')) {
             // TODO verbose: if folder not exists print message
             $this->option__dir_result_path = IO::input()->getOption('result');
+        }
+        if (IO::input()->hasOption('format')) {
+            $this->option__format = IO::input()->getOption('format');
         }
 
         // Return unix status code
