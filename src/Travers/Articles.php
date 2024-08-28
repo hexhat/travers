@@ -74,31 +74,23 @@ class Articles implements ArticlesInterface
                     IO::newLine();
 
                     foreach ($this as $path => $article) {
-                        if (
-                            // TODO this check must be at validator middlewares
-                            is_array($article) &&
-                            array_key_exists('matter', $article) &&
-                            array_key_exists('body', $article)
-                        ) {
-                            IO::textVerbose('<fg=red>Current iterator position is </>' . $this->position);
-                            $matter = [];
-                            if (is_array($article['matter'])) {
-                                foreach ($article['matter'] as $name => $value) {
-                                    $matter[] = [$name => json_encode($value)];
-                                }
-                            } else {
-                                IO::warning('Frontmatter is not an array');
+
+                        IO::textVerbose('<fg=red>Current iterator position is </>' . $this->position);
+                        $matter = [];
+                        if (is_array($article['matter'])) {
+                            foreach ($article['matter'] as $name => $value) {
+                                $matter[] = [$name => json_encode($value)];
                             }
-                            IO::text('<fg=red>' . $path . '</>');
-                            IO::text(
-                                '<fg=green>Content preview: </>' .
-                                trim(substr($article['body'], 0, 60)) .
-                                '...'
-                            );
-                            IO::definitionList(...$matter);
                         } else {
-                            IO::warning('Unexpected structure of the Articles object');
+                            IO::warning('Frontmatter is not an array');
                         }
+                        IO::text('<fg=red>' . $path . '</>');
+                        IO::text(
+                            '<fg=green>Content preview: </>' .
+                            trim(substr($article['body'], 0, 60)) .
+                            '...'
+                        );
+                        IO::definitionList(...$matter);
                     }
 
                     IO::textVerbose('<fg=red>End iterator position is </>' . $this->position);
